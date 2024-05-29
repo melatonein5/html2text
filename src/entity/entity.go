@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package html2text
+package entity
 
 // entity is a map from HTML entity names to their values. The semicolon matters:
 // https://html.spec.whatwg.org/multipage/named-characters.html
@@ -2043,4 +2043,12 @@ var entity = map[string]rune{
 	"zscr":                            '\U0001D4CF',
 	"zwj":                             '\U0000200D',
 	"zwnj":                            '\U0000200C',
+}
+
+// GetEntity returns the rune for the named entity.
+func GetEntity(name string) rune {
+	if r, ok := entity[name]; ok {
+		return r
+	}
+	return 0
 }
